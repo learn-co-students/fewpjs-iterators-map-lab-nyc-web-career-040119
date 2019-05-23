@@ -12,5 +12,25 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  return tutorials.map(title => {
+    // return titleizeStr(title)
+    return title.split(' ').map(word => (
+      word[0].toUpperCase() + word.substr(1)
+    )).join(' ')
+  })
+}
+
+// I DID TOO MUCH WORK HERE
+const titleizeStr = str => {
+  const exceptions = [ 'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor']
+  str = str.split(' ')
+
+  for (const i in str) {
+    // console.log(i, typeof i)
+    if (!exceptions.includes(str[i]) && i != "0") {
+      str[i] = str[i][0].toUpperCase() + str[i].substr(1)
+    }
+  }
+
+  return str.join(' ')
 }
